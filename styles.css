@@ -28,11 +28,24 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 } */
+.wildDancer{
+  color: greenyellow;
+  border: 30px solid;
+  position: absolute;
+}
+
+.blinkyDancer{
+  color: gold;
+  border: 10px solid gold;
+  border-radius: 10px;
+  position: absolute;
+}
 
 .superHero{
+  color: rgb(255, 255, 255);
   animation:spin 4s linear infinite;
   position: absolute;
-  border: 20px solid white;
+  border: 20px solid;
   border-radius: 0px;
 }
 
@@ -44,6 +57,7 @@ body, a:link, a:visited, a:active{
 }
 
 .popDancer{
+  color: powderblue;
   animation: move 2s linear infinite;
   width: 0;
   height: 0;
@@ -57,3 +71,4 @@ body, a:link, a:visited, a:active{
   0% {left: 10%;}
   100% {left: 80%;}
 }
+

@@ -11,7 +11,7 @@ $(document).ready(function() {
      * will call the function to make the dancer.
      */
 
-    /* dancerMakerFunctionName is a string which must match
+    /* dancerMakåerFunctionName is a string which must match
      * one of the dancer maker functions available in global scope.
      * A new object of the given type will be created and added
      * to the stage.
@@ -27,23 +27,24 @@ $(document).ready(function() {
     );
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
+
   });
-  var $lineup = $('.lineUpButton');
-  $lineup.on('click', function(event) {
-    if ($lineup.text() === 'line up dancers') {
-      if (window.dancers.length > 0) {
-        $('.popDancer').css('animation', 'null');
-        window.dancers.forEach(function(dancer) {
-          dancer.lineup();
-        });
-        $lineup.text('recess dancer');
-      }
+
+  $('.lineUpButton').on('click', function(event) {
+    if ($('.lineUpButton').text() === 'line up dancers') {
+      $('.popDancer').css('animation', 'null');
+      window.dancers.forEach(function(dancer) {
+        dancer.lineup();
+      });
+      $('.lineUpButton').text('recess lined up dancers');
     } else {
       $('.popDancer').css('animation', 'move 2s linear infinite');
       window.dancers.forEach(function(dancer) {
         dancer.unlineup();
       });
-      $lineup.text('line up dancers');
+      $('.lineUpButton').text('line up dancers');
     }
   });
+
+
 });
