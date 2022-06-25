@@ -22,6 +22,13 @@ var MakeBlinkyDancer = function(top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
   this.$node.addClass('blinkyDancer');
   this.setStyle();
+  var $blinky = this.$node;
+  this.$node.mouseover(function() {
+    $blinky.css('border-color', 'green');
+  });
+  this.$node.mouseleave(function() {
+    $blinky.css('border-color', 'gold');
+  });
 };
 
 MakeBlinkyDancer.prototype = Object.create(MakeDancer.prototype);

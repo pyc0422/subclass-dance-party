@@ -1,5 +1,7 @@
 $(document).ready(function() {
   window.dancers = [];
+  var lined = false;
+
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -18,31 +20,30 @@ $(document).ready(function() {
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
     // make a dancer with a random position
-
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $('body').height() * Math.random(),
+      $('body').width() * Math.random(),
       Math.random() * 1000
     );
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
-
-  $('.lineUpButton').on('click', function(event) {
-    if ($('.lineUpButton').text() === 'line up dancers') {
-      // $('.dancer').css({'left': 0});
-      $('.popDancer').css('animation', 'null');
-      window.dancers.forEach(function(dancer) {
-        dancer.lineup();
-      });
-      $('.lineUpButton').text('recess lined up dancers');
+  var $lineup = $('.lineUpButton');
+  $lineup.on('click', function(event) {
+    if ($lineup.text() === 'line up dancers') {
+      if (window.dancers.length > 0) {
+        $('.popDancer').css('animation', 'null');
+        window.dancers.forEach(function(dancer) {
+          dancer.lineup();
+        });
+        $lineup.text('recess dancer');
+      }
     } else {
       $('.popDancer').css('animation', 'move 2s linear infinite');
       window.dancers.forEach(function(dancer) {
         dancer.unlineup();
       });
-      $('.lineUpButton').text('line up dancers');
+      $lineup.text('line up dancers');
     }
-
   });
 });

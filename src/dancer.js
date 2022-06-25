@@ -38,13 +38,13 @@ var MakeDancer = function(top, left, timeBetweenSteps) {
   this.$node = $('<span class="dancer"></span>');
   this.timeBetweenSteps = timeBetweenSteps;
   this.step();
-  this.left = left;
   this.top = top;
+  this.left = left;
   this.setPosition();
 };
 
 MakeDancer.prototype.step = function() {
-  this.timeout = setTimeout(this.step.bind(this), this.timeBetweenSteps);
+  setTimeout(this.step.bind(this), this.timeBetweenSteps);
 };
 
 MakeDancer.prototype.lineup = function() {
@@ -53,6 +53,7 @@ MakeDancer.prototype.lineup = function() {
 
 MakeDancer.prototype.unlineup = function() {
   this.$node.css({'top': '' + (Math.random() * 90) + '%'});
+  this.$node.css({'left': '' + (Math.random() * 90) + '%'});
 };
 
 MakeDancer.prototype.setPosition = function() {
